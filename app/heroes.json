@@ -1,0 +1,290 @@
+[
+    {
+        "name": "Brogan",
+        "class": "the Destroyer",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Arien",
+        "class": "the Tidemaster",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Min",
+        "class": "the Dragonmonk",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Tigerclaw",
+        "class": "the Cutpurse",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Wuk",
+        "class": "the Grove Guardian",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Hanu",
+        "class": "the Trickster",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Trinkets",
+        "class": "the Scavenger",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Garrus",
+        "class": "the Gladiator",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Bain",
+        "class": "the Bounty Hunter",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Ursafar",
+        "class": "the Savage",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Whisper",
+        "class": "the Outcast",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Takahide",
+        "class": "the Warlord",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Emmitt",
+        "class": "the Traveller",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Snorri",
+        "class": "the Runescribe",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Gydion",
+        "class": "the Archwizard",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Mortimer",
+        "class": "the Awakener",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Mrak",
+        "class": "the Stoneshaper",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Ignatia",
+        "class": "the Mad",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Sabina",
+        "class": "the Commander",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Wasp",
+        "class": "the Warmaiden",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Swift",
+        "class": "the Sharpshooter",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Dodger",
+        "class": "the Warlock",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Xargatha",
+        "class": "the Changed",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Silverarrow",
+        "class": "the Pathfinder",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Misa",
+        "class": "the Samurai",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Tali",
+        "class": "the Spiritcaller",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Cutter",
+        "class": "the Sky Pirate",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Rowenna",
+        "class": "the Vanguard",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Brynn",
+        "class": "the Seeker",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "W & P",
+        "class": "Widget and Pyro",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "Razzle",
+        "class": "the Fay",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    },
+    {
+        "name": "NebKher",
+        "class": "the Harbinger",
+        "difficulty": 2,
+        "attack": "?",
+        "defense": "?",
+        "initiative": "?",
+        "movement": "?"
+    }
+]

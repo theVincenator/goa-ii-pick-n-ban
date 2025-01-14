@@ -1,0 +1,254 @@
+:root {
+    --team-a-color: lightsalmon;
+    --team-b-color: lightskyblue;
+}
+
+.pickBanScreen {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+
+.quitButton {
+    min-width: 50px;
+    min-height: 20px;
+    font-size: x-small;
+    background-color: lightgray;
+    border-style: hidden;
+    padding: 5px;
+    margin: 0px 0px 5px;
+    transition-duration: 1s;
+}
+
+.quitButton:hover {
+    background-color: red;
+    color: white;
+}
+
+.timer {
+    font-size: large;
+    text-align: center;
+}
+
+.picksAndBans {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    min-height: 250px;
+}
+
+.teamAPicksAndBans {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--team-a-color);
+    padding: 10px;
+    gap: 5px;
+    min-height: 140px;
+}
+
+.teamBPicksAndBans {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--team-b-color);
+    padding: 10px;
+    gap: 5px;
+    min-height: 140px;
+    font-size: smaller;
+}
+
+.teamAStatus {
+    font-size: large;
+    color: white;
+    flex: 1;
+    background-color: var(--team-a-color);
+    text-align: center;
+    min-height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.teamBStatus {
+    color: white;
+    font-size: large;
+    flex: 1;
+    background-color: var(--team-b-color);
+    text-align: center;
+    min-height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.teamAPicks {
+    flex: 3;
+    gap: 5px;
+    display: flex;
+}
+
+.teamABans {
+    flex: 1;
+    gap: 5px;
+    display: flex;
+}
+
+.teamBPicks {
+    flex: 3;
+    gap: 5px;
+    display: flex;
+}
+
+.teamBBans {
+    flex: 1;
+    gap: 5px;
+    display: flex;
+}
+
+.pick {
+    flex: 3;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    font-size: small;
+    min-width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ban {
+    flex: 1;
+    background-color: lightgray;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: line-through;
+    font-size: small;
+    min-width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heroPicker {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px 10px 10px;
+}
+
+.heroGridAndInfo {
+    display: flex;
+    column-gap: 20px;
+    font-size: small;
+    flex-wrap: wrap;
+    min-height: 180px;
+}
+
+.heroGrid {
+    flex: 4;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+    padding: 10px;
+    margin: 10px;
+    min-width: 200px;
+}
+
+.heroButton {
+    border-width: 1px;
+    border-radius: 4px;
+    min-height: 30px;
+}
+
+/* Hover animation only on selectable buttons */
+.heroButton:hover:not(.selectedHeroButton):not(.pickedByTeamAHeroButton):not(.pickedByTeamBHeroButton):not(.bannedHeroButton) {
+    background-color: lightgray;
+}
+
+.selectedHeroButton {
+    border-style: inset;
+    border-width: 3px;
+}
+
+.teamAHighlight {
+    background-color: var(--team-a-color);
+}
+
+.teamBHighlight {
+    background-color: var(--team-b-color);
+}
+
+.randomHeroButton {
+    border-style: dashed;
+}
+
+.pickedByTeamAHeroButton {
+    color: white;
+    border-style: hidden;
+    background-color: var(--team-a-color);
+}
+
+.pickedByTeamAHeroButton:hover {
+    background-color: var(--team-a-color);
+}
+
+.pickedByTeamBHeroButton {
+    border-style: hidden;
+    color: white;
+    background-color: var(--team-b-color);
+}
+
+.pickedByTeamBHeroButton:hover {
+    background-color: var(--team-b-color);
+}
+
+.bannedHeroButton {
+    text-decoration: line-through;
+    background-color: transparent;
+    border-width: 0px;
+}
+
+
+.bannedHeroButton:hover {
+    background-color: transparent;
+}
+
+.heroInfo {
+    flex: 1;
+    padding: 10px;
+    margin: 10px;
+    border-style: outset;
+    min-width: 180px;
+    min-height: 150px;
+    max-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.randomHeroInfo {
+    background-color: lightgrey;
+    font-size: xx-large;
+}
+
+.confirmButton {
+    flex: 1;
+    height: 1fr;
+    margin: 10px;
+    width: 30%;
+    height: 100%;
+    border-radius: 20px;
+    min-width: 200px;
+    min-height: 60px;
+    align-self: center;
+    transition-duration: 1s;
+    font-size: x-large;
+}
+
+.confirmButton:hover:enabled {
+    color: white;
+    background-color: black;
+}

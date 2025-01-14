@@ -1,0 +1,385 @@
+'use client'
+import { useEffect, useState } from 'react';
+import heroData from './herodataimporter';
+
+import "./pickbanscreen.css";
+
+function TeamAPicks({ teamsize, teamAPicks }) {
+    let picks = []
+    for (let n = 0; n < teamsize; n++) {
+        const name = teamAPicks[n] ? teamAPicks[n].name : "";
+        picks.push(
+            <div key={"teamapick" + n} className="pick">{name}</div>
+        )
+    }
+    return (
+        <div className="teamAPicks">
+            {picks}
+        </div>
+    )
+}
+
+function TeamABans({ teamsize, teamABans }) {
+    let bans = []
+    for (let n = 0; n < teamsize; n++) {
+        const name = teamABans[n] ? teamABans[n].name : "";
+        bans.push(
+            <div key={"teamaban" + n} className="ban">{name}</div>
+        )
+    }
+    return (
+        <div className="teamABans">
+            {bans}
+        </div>
+    )
+}
+
+function TeamBPicks({ teamsize, teamBPicks }) {
+    let picks = []
+    for (let n = 0; n < teamsize; n++) {
+        const name = teamBPicks[n] ? teamBPicks[n].name : "";
+        picks.push(
+            <div key={"teamapick" + n} className="pick">{name}</div>
+        )
+    }
+    return (
+        <div className="teamBPicks">
+            {picks}
+        </div>
+    )
+}
+
+function TeamBBans({ teamsize, teamBBans }) {
+    let bans = []
+    for (let n = 0; n < teamsize; n++) {
+        const name = teamBBans[n] ? teamBBans[n].name : "";
+        bans.push(
+            <div key={"teamaban" + n} className="ban">{name}</div>
+        )
+    }
+    return (
+        <div className="teamBBans">
+            {bans}
+        </div>
+    )
+}
+
+function TeamAPicksAndBans({ teamAStatus, teamsize, teamAPicks, teamABans }) {
+    return (
+        <div className="teamAPicksAndBans">
+            <div className="teamAStatus">
+                {teamAStatus}
+            </div>
+            <TeamAPicks teamsize={teamsize} teamAPicks={teamAPicks} />
+            <TeamABans teamsize={teamsize} teamABans={teamABans} />
+        </div>
+    );
+}
+
+function TeamBPicksAndBans({ teamBStatus, teamsize, teamBPicks, teamBBans }) {
+    return (
+        <div className="teamBPicksAndBans">
+            <div className="teamBStatus">
+                {teamBStatus}
+            </div>
+            <TeamBPicks teamsize={teamsize} teamBPicks={teamBPicks} />
+            <TeamBBans teamsize={teamsize} teamBBans={teamBBans} />
+        </div>
+    );
+}
+
+function AllPicksAndBans({ teamAStatus, teamBStatus, teamsize, teamAPicks, teamABans, teamBPicks, teamBBans }) {
+    return (
+        <div className="picksAndBans">
+            <TeamAPicksAndBans
+                teamAStatus={teamAStatus}
+                teamsize={teamsize}
+                teamAPicks={teamAPicks}
+                teamABans={teamABans}
+            />
+            <TeamBPicksAndBans
+                teamBStatus={teamBStatus}
+                teamsize={teamsize}
+                teamBPicks={teamBPicks}
+                teamBBans={teamBBans}
+            />
+        </div>
+    );
+}
+
+function HeroGrid({ onSelectedHeroChange, pickOrBanStep, selectedHero, teamAPicks, teamABans, teamBPicks, teamBBans }) {
+    const unselectableHeroes = [...teamAPicks, ...teamABans, ...teamBPicks, ...teamBBans];
+
+    let highlightClassName;
+    if (pickOrBanStep) {
+        highlightClassName = pickOrBanStep.charAt(0) === "A" ? "teamAHighlight" : "teamBHighlight";
+    }
+
+    function createRandomHeroButton() {
+
+        const classNamesRandomButton = ['heroButton randomHeroButton'];
+        if (selectedHero === null) {
+            classNamesRandomButton.push("selectedHeroButton");
+            classNamesRandomButton.push(highlightClassName);
+        }
+        return (
+            <button className={classNamesRandomButton.join(' ')} onClick={() => onSelectedHeroChange(null)}>
+                Random
+            </button>
+        )
+    }
+
+    return (
+        <div className="heroGrid">
+            {
+                heroData.map((hero) => {
+                    let classNames = ["heroButton"];
+                    if (hero === selectedHero) {
+                        classNames.push("selectedHeroButton");
+                        classNames.push(highlightClassName);
+                    }
+
+                    if (teamAPicks.includes(hero)) {
+                        classNames.push("pickedByTeamAHeroButton");
+                    }
+
+                    if (teamBPicks.includes(hero)) {
+                        classNames.push("pickedByTeamBHeroButton");
+                    }
+
+                    if (teamABans.includes(hero) || teamBBans.includes(hero)) {
+                        classNames.push("bannedHeroButton");
+                    }
+
+                    return (
+                        <button
+                            key={hero.name}
+                            className={classNames.join(' ')}
+                            onClick={() => onSelectedHeroChange(hero)}
+                            disabled={unselectableHeroes.includes(hero)}
+                        >
+                            {hero.name}
+                        </button>
+                    )
+                })
+            }
+            {createRandomHeroButton()}
+        </div >
+    );
+}
+
+function HeroInfo({ selectedHero }) {
+    if (selectedHero) {
+        return (
+            <div className="heroInfo">
+                {selectedHero.name}, {selectedHero.class}
+                <div className="difficultyLevel">
+                    {'*'.repeat(selectedHero.difficulty)}
+                </div>
+                <ul>
+                    <li>Attack: {selectedHero.attack}</li>
+                    <li>Initiative: {selectedHero.initiative}</li>
+                    <li>Defense: {selectedHero.defense}</li>
+                    <li>Movement: {selectedHero.movement}</li>
+                </ul>
+            </div>
+        );
+    } else {
+        return (
+            <div className="heroInfo randomHeroInfo">
+                ?
+            </div>
+        );
+    }
+}
+
+function HeroPicker({ submitSelection, allowSelection, pickOrBanStep, teamAPicks, teamABans, teamBPicks, teamBBans }) {
+    const [selectedHero, setSelectedHero] = useState(null);
+
+    const unselectableHeroes = [...teamAPicks, ...teamABans, ...teamBPicks, ...teamBBans];
+    if (unselectableHeroes.includes(selectedHero)) { setSelectedHero(null) };
+
+    function onConfirm() {
+        submitSelection(selectedHero);
+        setSelectedHero(null);
+    }
+
+    return (
+        <div className='heroPicker'>
+            <ConfirmButton
+                onConfirm={onConfirm}
+                allowSelection={allowSelection}
+                pickOrBanStep={pickOrBanStep}
+                selectedHero={selectedHero}
+            />
+            <div className='heroGridAndInfo'>
+                <HeroInfo selectedHero={selectedHero} />
+                <HeroGrid
+                    onSelectedHeroChange={setSelectedHero}
+                    pickOrBanStep={pickOrBanStep}
+                    selectedHero={selectedHero}
+                    teamAPicks={teamAPicks}
+                    teamABans={teamABans}
+                    teamBPicks={teamBPicks}
+                    teamBBans={teamBBans}
+                />
+            </div>
+        </div >
+    );
+}
+
+function ConfirmButton({ onConfirm, allowSelection, pickOrBanStep, selectedHero }) {
+    if (!pickOrBanStep) {
+        return null;
+    }
+
+    let pickOrBanInfoText = "Wait";
+    let forTeamText = "for other Team...";
+    let heroname = "";
+
+    if (allowSelection) {
+        if (pickOrBanStep.charAt(1) === "P") {
+            pickOrBanInfoText = "Pick";
+            forTeamText = pickOrBanStep.charAt(0) === "A" ? "for Team A" : "for Team B";
+        } else {
+            pickOrBanInfoText = "Ban"
+            forTeamText = "";
+        }
+
+        heroname = selectedHero === null ? "a random hero" : selectedHero.name.toUpperCase();
+    }
+
+    return (
+        <button className="confirmButton" disabled={!allowSelection} onClick={() => onConfirm()
+        }>
+            {pickOrBanInfoText} {heroname} {forTeamText}
+        </button >
+    )
+}
+
+// AP: Team A, the starting team, picks, AP: Team A bans
+// BP: Team B, the other team, picks, BB: Team B bans
+const completePickBanOrder = [
+    "AB", "BB", "AP", "BP", "BB", "AB", "BP", "AP", // 04 Players
+    "AB", "BB", "BP", "AP",                         // 06 Players
+    "BB", "AB", "AP", "BP",                         // 08 Players
+    "BB", "AB", "BP", "AP"                          // 10 Players
+];
+
+
+export default function PickBanScreen({ handleExit, teamsize, connectionData, receivedHeroName }) {
+    const [pickBanOrder, setPickBanOrder] = useState(completePickBanOrder.slice(0, teamsize * 4));
+    const [teamAPicks, setTeamAPicks] = useState([]);
+    const [teamABans, setTeamABans] = useState([]);
+    const [teamBPicks, setTeamBPicks] = useState([]);
+    const [teamBBans, setTeamBBans] = useState([]);
+
+    useEffect(() => {
+        if (receivedHeroName) {
+            console.log("Received Pick: " + receivedHeroName)
+            const receivedHero = heroData.find((h) => { return h.name === receivedHeroName });
+            selectHero(receivedHero);
+        }
+    }, [receivedHeroName]);
+
+    // check if its "your turn"
+    const allowSelection = pickBanOrder[0] && (
+        (!connectionData.isOnline)
+        || (connectionData.isHosting && pickBanOrder[0].charAt(0) === "A")
+        || (!connectionData.isHosting && pickBanOrder[0].charAt(0) === "B"));
+
+    function onSubmitSelection(hero) {
+        let chosenHero;
+        if (hero === null) {
+            // select random hero
+            let unselectableHeroes = [
+                ...teamAPicks,
+                ...teamABans,
+                ...teamBPicks,
+                ...teamBBans
+            ];
+
+            let selectableHeroes = heroData.filter((h) => !unselectableHeroes.includes(h));
+            chosenHero = selectableHeroes[Math.floor(Math.random() * selectableHeroes.length)];
+        } else {
+            chosenHero = hero;
+        }
+
+        selectHero(chosenHero);
+
+        // send game state to others
+        if (connectionData.isOnline) {
+            connectionData.connection.send(chosenHero.name);
+        }
+    }
+
+    function selectHero(hero) {
+        switch (pickBanOrder[0]) {
+            case "AP":
+                setTeamAPicks([...teamAPicks, hero]);
+                break;
+            case "AB":
+                setTeamABans([...teamABans, hero]);
+                break;
+            case "BP":
+                setTeamBPicks([...teamBPicks, hero]);
+                break;
+            case "BB":
+                setTeamBBans([...teamBBans, hero]);
+                break;
+        }
+        setPickBanOrder(pickBanOrder.slice(1));
+    }
+
+    let teamAStatus;
+    let teamBStatus;
+
+    switch (pickBanOrder[0]) {
+        case "AP":
+            teamAStatus = "Team A is picking...";
+            break;
+        case "AB":
+            teamAStatus = "Team A is banning...";
+            break;
+        case "BP":
+            teamBStatus = "Team B is picking...";
+            break;
+        case "BB":
+            teamBStatus = "Team B is banning...";
+            break;
+        default:
+            teamAStatus = "Team A:";
+            teamBStatus = "Team B:";
+            break;
+    }
+
+    return (
+        <div className="pickBanScreen">
+            <div className="headerBar">
+                <button className="quitButton" onClick={() => handleExit()}>Back to Main Menu (Abandon)</button>
+                <div className="hostingStatus">
+                    {connectionData.isOnline && connectionData.isHosting ? <>Hosting game {connectionData.label}</> : null}
+                    {connectionData.isOnline && !connectionData.isHosting ? <>Connected to game {connectionData.label}</> : null}
+                </div>
+            </div>
+            <AllPicksAndBans
+                teamAStatus={teamAStatus}
+                teamBStatus={teamBStatus}
+                teamsize={teamsize}
+                teamAPicks={teamAPicks}
+                teamABans={teamABans}
+                teamBPicks={teamBPicks}
+                teamBBans={teamBBans}
+            />
+            <HeroPicker
+                submitSelection={onSubmitSelection}
+                allowSelection={allowSelection}
+                pickOrBanStep={pickBanOrder[0]}
+                teamAPicks={teamAPicks}
+                teamABans={teamABans}
+                teamBPicks={teamBPicks}
+                teamBBans={teamBBans}
+            />
+        </div>
+    );
+}
