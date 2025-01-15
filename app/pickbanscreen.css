@@ -148,71 +148,11 @@
 .heroGrid {
     flex: 4;
     display: grid;
-    gap: 15px;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
-    padding: 10px;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-rows: repeat(auto-fill, 1fr);
     margin: 10px;
-    min-width: 200px;
-}
-
-.heroButton {
-    border-width: 1px;
-    border-radius: 4px;
-    min-height: 30px;
-}
-
-/* Hover animation only on selectable buttons */
-.heroButton:hover:not(.selectedHeroButton):not(.pickedByTeamAHeroButton):not(.pickedByTeamBHeroButton):not(.bannedHeroButton) {
-    background-color: lightgray;
-}
-
-.selectedHeroButton {
-    border-style: inset;
-    border-width: 3px;
-}
-
-.teamAHighlight {
-    background-color: var(--team-a-color);
-}
-
-.teamBHighlight {
-    background-color: var(--team-b-color);
-}
-
-.randomHeroButton {
-    border-style: dashed;
-}
-
-.pickedByTeamAHeroButton {
-    color: white;
-    border-style: hidden;
-    background-color: var(--team-a-color);
-}
-
-.pickedByTeamAHeroButton:hover {
-    background-color: var(--team-a-color);
-}
-
-.pickedByTeamBHeroButton {
-    border-style: hidden;
-    color: white;
-    background-color: var(--team-b-color);
-}
-
-.pickedByTeamBHeroButton:hover {
-    background-color: var(--team-b-color);
-}
-
-.bannedHeroButton {
-    text-decoration: line-through;
-    background-color: transparent;
-    border-width: 0px;
-}
-
-
-.bannedHeroButton:hover {
-    background-color: transparent;
+    min-width: 200x;
 }
 
 .heroInfo {
@@ -230,7 +170,7 @@
 }
 
 .difficultyLevel {
-    font-size: large;
+    font-size: xx-large;
     display: flex;
     flex-direction: column;
     justify-content: center;

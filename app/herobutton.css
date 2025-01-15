@@ -1,0 +1,109 @@
+.heroButton {
+    display: flex;
+    border-width: 1px;
+    border-radius: 4px;
+    border-style: hidden;
+    margin: 0px;
+    padding: 0px;
+    transition-duration: 0.1s;
+    height: min-content;
+}
+
+.heroButtonContent {
+    flex: 1;
+    display: grid;
+}
+
+.heroButton img {
+    grid-row: 1;
+    grid-column: 1;
+    transition-duration: 0.5s;
+}
+
+.nameOverlayBox {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    grid-row: 1;
+    grid-column: 1;
+
+    font-size: smaller;
+    mask-size: cover;
+    mask-repeat: no-repeat;
+}
+
+.nameOverlayText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 20px;
+}
+
+/* Hover animation only on selectable buttons */
+.heroButton:hover:not(.selectedHeroButton):not(.pickedByTeamAHeroButton):not(.pickedByTeamBHeroButton):not(.bannedHeroButton) {
+    background-color: lightgray;
+    transition-duration: 0.4s;
+}
+
+.selectedHeroButton {
+    border-style: inset;
+    border-width: 3px;
+}
+
+.teamAHighlight {
+    background-color: var(--team-a-color);
+}
+
+.teamBHighlight {
+    background-color: var(--team-b-color);
+}
+
+.randomHeroButton {
+    border-style: dashed;
+}
+
+.pickedByTeamAHeroButton {
+    color: white;
+    border-style: hidden;
+    background-color: color-mix(in srgb, var(--team-a-color) 45%, transparent);
+}
+
+.pickedByTeamAHeroButton img {
+    filter: grayscale(10%) opacity(30%)
+}
+
+.pickedByTeamAHeroButton:hover {
+    background-color: color-mix(in srgb, var(--team-a-color) 45%, transparent);
+}
+
+.pickedByTeamBHeroButton {
+    border-style: hidden;
+    color: white;
+    background-color: color-mix(in srgb, var(--team-b-color) 45%, transparent);
+}
+
+.pickedByTeamBHeroButton img {
+    filter: grayscale(10%) opacity(30%)
+}
+
+.pickedByTeamBHeroButton:hover {
+    background-color: color-mix(in srgb, var(--team-b-color) 45%, transparent);
+}
+
+.bannedHeroButton {
+    background-color: transparent;
+    border-width: 0px;
+}
+
+.bannedHeroButton img {
+    filter: grayscale(100%) opacity(50%);
+}
+
+.bannedHeroButton:hover {
+    background-color: transparent;
+}

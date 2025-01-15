@@ -1,6 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react';
+
 import heroData from './herodataimporter';
+import HeroButton from './herobutton'
 
 import "./pickbanscreen.css";
 
@@ -123,14 +125,19 @@ function HeroGrid({ onSelectedHeroChange, pickOrBanStep, selectedHero, teamAPick
             classNamesRandomButton.push(highlightClassName);
         }
         return (
-            <button className={classNamesRandomButton.join(' ')} onClick={() => onSelectedHeroChange(null)}>
-                Random
-            </button>
+            <HeroButton
+                key="Random"
+                heroname="Random"
+                className={classNamesRandomButton.join(' ')}
+                onSelectedHeroChange={() => onSelectedHeroChange(null)}
+                isDisabled={false}
+            />
         )
     }
 
     return (
         <div className="heroGrid">
+            {createRandomHeroButton()}
             {
                 heroData.map((hero) => {
                     let classNames = ["heroButton"];
@@ -152,29 +159,28 @@ function HeroGrid({ onSelectedHeroChange, pickOrBanStep, selectedHero, teamAPick
                     }
 
                     return (
-                        <button
+                        <HeroButton
                             key={hero.name}
+                            heroname={hero.name}
                             className={classNames.join(' ')}
-                            onClick={() => onSelectedHeroChange(hero)}
-                            disabled={unselectableHeroes.includes(hero)}
-                        >
-                            {hero.name}
-                        </button>
+                            onSelectedHeroChange={() => onSelectedHeroChange(hero)}
+                            isDisabled={unselectableHeroes.includes(hero)}
+                        />
                     )
                 })
             }
-            {createRandomHeroButton()}
         </div >
     );
 }
 
 function HeroInfo({ selectedHero }) {
     if (selectedHero) {
+        const conjunction = selectedHero.name != "Widget" ? ", " : " and ";
         return (
             <div className="heroInfo">
-                {selectedHero.name}, {selectedHero.class}
+                {selectedHero.name}{conjunction}{selectedHero.class}
                 <div className="difficultyLevel">
-                    {' ★'.repeat(selectedHero.difficulty) + " ?"}
+                    {' ★'.repeat(selectedHero.difficulty)}
                 </div>
                 <ul className="heroStats">
                     <li className="heroStat">Attack: {selectedHero.attack}</li>

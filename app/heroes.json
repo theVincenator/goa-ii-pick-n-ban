@@ -2,7 +2,7 @@
     {
         "name": "Brogan",
         "class": "the Destroyer",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -11,7 +11,7 @@
     {
         "name": "Arien",
         "class": "the Tidemaster",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -20,7 +20,7 @@
     {
         "name": "Min",
         "class": "the Dragonmonk",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -29,7 +29,7 @@
     {
         "name": "Tigerclaw",
         "class": "the Cutpurse",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -38,7 +38,7 @@
     {
         "name": "Wuk",
         "class": "the Grove Guardian",
-        "difficulty": 2,
+        "difficulty": 3,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -47,7 +47,7 @@
     {
         "name": "Hanu",
         "class": "the Trickster",
-        "difficulty": 2,
+        "difficulty": 3,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -56,7 +56,7 @@
     {
         "name": "Trinkets",
         "class": "the Scavenger",
-        "difficulty": 2,
+        "difficulty": 3,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -65,7 +65,7 @@
     {
         "name": "Garrus",
         "class": "the Gladiator",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -92,7 +92,7 @@
     {
         "name": "Whisper",
         "class": "the Outcast",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -110,7 +110,7 @@
     {
         "name": "Emmitt",
         "class": "the Traveller",
-        "difficulty": 2,
+        "difficulty": 3,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -119,7 +119,7 @@
     {
         "name": "Snorri",
         "class": "the Runescribe",
-        "difficulty": 2,
+        "difficulty": 3,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -128,7 +128,7 @@
     {
         "name": "Gydion",
         "class": "the Archwizard",
-        "difficulty": 2,
+        "difficulty": 4,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -155,7 +155,7 @@
     {
         "name": "Ignatia",
         "class": "the Mad",
-        "difficulty": 2,
+        "difficulty": 4,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -164,7 +164,7 @@
     {
         "name": "Sabina",
         "class": "the Commander",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -173,7 +173,7 @@
     {
         "name": "Wasp",
         "class": "the Warmaiden",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -200,7 +200,7 @@
     {
         "name": "Xargatha",
         "class": "the Changed",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -227,7 +227,7 @@
     {
         "name": "Tali",
         "class": "the Spiritcaller",
-        "difficulty": 2,
+        "difficulty": 3,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -245,7 +245,7 @@
     {
         "name": "Rowenna",
         "class": "the Vanguard",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -254,16 +254,16 @@
     {
         "name": "Brynn",
         "class": "the Seeker",
-        "difficulty": 2,
+        "difficulty": 1,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
         "movement": "?"
     },
     {
-        "name": "W & P",
-        "class": "Widget and Pyro",
-        "difficulty": 2,
+        "name": "Widget",
+        "class": "Pyro",
+        "difficulty": 3,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -272,7 +272,7 @@
     {
         "name": "Razzle",
         "class": "the Fay",
-        "difficulty": 2,
+        "difficulty": 3,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
@@ -281,7 +281,7 @@
     {
         "name": "NebKher",
         "class": "the Harbinger",
-        "difficulty": 2,
+        "difficulty": 3,
         "attack": "?",
         "defense": "?",
         "initiative": "?",
