@@ -6,7 +6,19 @@
 .pickBanScreen {
     display: flex;
     flex-direction: column;
-    min-width: 200px;
+}
+
+.headerBar {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.hostingStatus {
+    display: flex;
+    justify-content: end;
+    font-size: x-small;
+    flex: 1;
 }
 
 .quitButton {
@@ -32,14 +44,17 @@
 
 .picksAndBans {
     display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    column-gap: 40px;
+    column-gap: 20px;
+    row-gap: 10px;
     min-height: 250px;
 }
 
 .teamAPicksAndBans {
     flex: 1;
     display: flex;
+    border-style: solid;
     flex-direction: column;
     background-color: var(--team-a-color);
     padding: 10px;
@@ -51,6 +66,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    border-style: solid;
     background-color: var(--team-b-color);
     padding: 10px;
     gap: 5px;
@@ -82,110 +98,116 @@
     justify-content: center;
 }
 
-.teamAPicks {
+.heroCard {
+    background-position: 50% 20%;
+    background-size: 220%;
+    max-width: 100px;
+}
+
+.heroCardName {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    overflow-x: hidden;
+}
+
+.pickrow {
+    justify-content: space-evenly;
     flex: 3;
     gap: 5px;
     display: flex;
 }
 
-.teamABans {
+.banrow {
+    justify-content: space-evenly;
     flex: 1;
     gap: 5px;
     display: flex;
 }
 
-.teamBPicks {
+.pickrow>div {
+    background-color: white;
     flex: 3;
-    gap: 5px;
+    text-align: center;
+    border-radius: px;
+    border-style: solid;
+    font-size: small;
+    min-width: 40px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.teamBBans {
+.banrow>div {
     flex: 1;
-    gap: 5px;
-    display: flex;
-}
-
-.pick {
-    flex: 3;
     background-color: white;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 5%;
+    border-style: solid;
     font-size: small;
-    min-width: 70px;
+    min-width: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.ban {
-    flex: 1;
-    background-color: lightgray;
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: line-through;
-    font-size: small;
-    min-width: 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    filter: grayscale(100%) opacity(50%);
 }
 
 .heroPicker {
     display: flex;
-    flex-direction: column;
-    padding: 20px 10px 10px 10px;
-}
-
-.heroGridAndInfo {
-    display: flex;
-    column-gap: 20px;
-    font-size: small;
-    flex-wrap: wrap;
-    min-height: 180px;
+    gap: 10px;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
+    padding: 20px 0px;
 }
 
 .heroGrid {
     flex: 4;
+
+    min-width: 210px;
+    max-height: 300px;
+
+    padding: 10px;
+    overflow-y: auto;
+    border-style: solid;
+
     display: grid;
     gap: 5px;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
     grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+.confirmbuttonAndInfo {
+    min-width: 200px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    column-gap: 20px;
+}
+
+
+.confirmButton {
     margin: 10px;
-    min-width: 200x;
+    border-radius: 20px;
+    min-height: 60px;
+    transition-duration: 0.5s;
+}
+
+.confirmButton:hover:enabled {
+    color: white;
+    background-color: black;
 }
 
 .heroInfo {
-    flex: 1;
     padding: 10px;
-    margin: 10px;
-    border-style: outset;
-    min-width: 180px;
-    min-height: 180px;
-    height: 100%;
+    min-height: 120px;
+
+    border-style: solid;
+
+    font-size: small;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
-}
-
-.difficultyLevel {
-    font-size: xx-large;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.heroStats {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0;
-}
-
-.heroStat {
-    float: left;
-    min-height: 20px;
 }
 
 .randomHeroInfo {
@@ -193,21 +215,31 @@
     font-size: xx-large;
 }
 
-.confirmButton {
+.heroName {
     flex: 1;
-    height: 1fr;
-    margin: 10px;
-    width: 30%;
-    height: 100%;
-    border-radius: 20px;
-    min-width: 200px;
-    min-height: 70px;
-    align-self: center;
-    transition-duration: 1s;
-    font-size: x-large;
+    display: flex;
+    align-items: center;
 }
 
-.confirmButton:hover:enabled {
-    color: white;
-    background-color: black;
+.difficultyLevel {
+    flex: 1;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+}
+
+.heroStats {
+    flex: 1;
+    display: grid;
+    width: 100%;
+    height: 100%;
+}
+
+.heroStats>div {
+    grid-template-rows: repeat(auto-fill, 1fr);
+    grid-template-columns: repeat(auto-fill, 1fr);
+}
+
+.heroStat {
+    min-height: 20px;
 }

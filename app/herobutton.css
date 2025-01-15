@@ -6,7 +6,9 @@
     margin: 0px;
     padding: 0px;
     transition-duration: 0.1s;
-    height: min-content;
+
+    height: max-content;
+    min-width: 70px;
 }
 
 .heroButtonContent {
@@ -28,7 +30,6 @@
     grid-row: 1;
     grid-column: 1;
 
-    font-size: smaller;
     mask-size: cover;
     mask-repeat: no-repeat;
 }
@@ -37,9 +38,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: smaller;
     color: white;
-    font-size: large;
-    font-weight: bolder;
     background-color: rgba(0, 0, 0, 0.7);
     height: 20px;
 }
@@ -61,6 +61,10 @@
 
 .teamBHighlight {
     background-color: var(--team-b-color);
+}
+
+.randomHeroButton {
+    border-style: hidden;
 }
 
 .randomHeroButton {

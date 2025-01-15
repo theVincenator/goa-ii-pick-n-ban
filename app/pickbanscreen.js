@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import heroData from './herodataimporter';
 import HeroButton from './herobutton'
+import HeroCard from './herocard'
 
 import "./pickbanscreen.css";
 
@@ -10,12 +11,10 @@ function TeamAPicks({ teamsize, teamAPicks }) {
     let picks = []
     for (let n = 0; n < teamsize; n++) {
         const name = teamAPicks[n] ? teamAPicks[n].name : "";
-        picks.push(
-            <div key={"teamapick" + n} className="pick">{name}</div>
-        )
+        picks.push(<HeroCard key={"teamapick" + n} heroname={name} />);
     }
     return (
-        <div className="teamAPicks">
+        <div className="pickrow">
             {picks}
         </div>
     )
@@ -25,12 +24,10 @@ function TeamABans({ teamsize, teamABans }) {
     let bans = []
     for (let n = 0; n < teamsize; n++) {
         const name = teamABans[n] ? teamABans[n].name : "";
-        bans.push(
-            <div key={"teamaban" + n} className="ban">{name}</div>
-        )
+        bans.push(<HeroCard key={"teamaban" + n} heroname={name} />);
     }
     return (
-        <div className="teamABans">
+        <div className="banrow">
             {bans}
         </div>
     )
@@ -40,12 +37,10 @@ function TeamBPicks({ teamsize, teamBPicks }) {
     let picks = []
     for (let n = 0; n < teamsize; n++) {
         const name = teamBPicks[n] ? teamBPicks[n].name : "";
-        picks.push(
-            <div key={"teamapick" + n} className="pick">{name}</div>
-        )
+        picks.push(<HeroCard key={"teambpick" + n} heroname={name} />);
     }
     return (
-        <div className="teamBPicks">
+        <div className="pickrow">
             {picks}
         </div>
     )
@@ -55,12 +50,10 @@ function TeamBBans({ teamsize, teamBBans }) {
     let bans = []
     for (let n = 0; n < teamsize; n++) {
         const name = teamBBans[n] ? teamBBans[n].name : "";
-        bans.push(
-            <div key={"teamaban" + n} className="ban">{name}</div>
-        )
+        bans.push(<HeroCard key={"teambban" + n} heroname={name} />);
     }
     return (
-        <div className="teamBBans">
+        <div className="banrow">
             {bans}
         </div>
     )
@@ -178,16 +171,18 @@ function HeroInfo({ selectedHero }) {
         const conjunction = selectedHero.name != "Widget" ? ", " : " and ";
         return (
             <div className="heroInfo">
-                {selectedHero.name}{conjunction}{selectedHero.class}
+                <div className="heroName">
+                    {selectedHero.name}{conjunction}{selectedHero.class}
+                </div>
                 <div className="difficultyLevel">
                     {' ★'.repeat(selectedHero.difficulty)}
                 </div>
-                <ul className="heroStats">
-                    <li className="heroStat">Attack: {selectedHero.attack}</li>
-                    <li className="heroStat">Initiative: {selectedHero.initiative}</li>
-                    <li className="heroStat">Defense: {selectedHero.defense}</li>
-                    <li className="heroStat">Movement: {selectedHero.movement}</li>
-                </ul>
+                <div className="heroStats">
+                    <div className="heroStat">Attack: {selectedHero.attack}</div>
+                    <div className="heroStat">Initiative: {selectedHero.initiative}</div>
+                    <div className="heroStat">Defense: {selectedHero.defense}</div>
+                    <div className="heroStat">Movement: {selectedHero.movement}</div>
+                </div>
             </div>
         );
     } else {
@@ -212,22 +207,22 @@ function HeroPicker({ submitSelection, allowSelection, pickOrBanStep, teamAPicks
 
     return (
         <div className='heroPicker'>
-            <ConfirmButton
-                onConfirm={onConfirm}
-                allowSelection={allowSelection}
+            <HeroGrid
+                onSelectedHeroChange={setSelectedHero}
                 pickOrBanStep={pickOrBanStep}
                 selectedHero={selectedHero}
+                teamAPicks={teamAPicks}
+                teamABans={teamABans}
+                teamBPicks={teamBPicks}
+                teamBBans={teamBBans}
             />
-            <div className='heroGridAndInfo'>
+            <div className='confirmbuttonAndInfo'>
                 <HeroInfo selectedHero={selectedHero} />
-                <HeroGrid
-                    onSelectedHeroChange={setSelectedHero}
+                <ConfirmButton
+                    onConfirm={onConfirm}
+                    allowSelection={allowSelection}
                     pickOrBanStep={pickOrBanStep}
                     selectedHero={selectedHero}
-                    teamAPicks={teamAPicks}
-                    teamABans={teamABans}
-                    teamBPicks={teamBPicks}
-                    teamBBans={teamBBans}
                 />
             </div>
         </div >
