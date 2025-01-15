@@ -9,13 +9,11 @@ var peer;
 
 function TeamSizeSelector({ teamsize, availableTeamsizes, onChangeTeamSize }) {
     return (
-        <div>
-            <select value={teamsize} onChange={(e) => onChangeTeamSize(e.target.value)}>
-                {availableTeamsizes.map(n => (
-                    <option key={n} value={n}>{n} players per team</option>
-                ))}
-            </select>
-        </div>
+        <select className="teamSizeSelector" value={teamsize} onChange={(e) => onChangeTeamSize(e.target.value)}>
+            {availableTeamsizes.map(n => (
+                <option key={n} value={n}>{n} players per team</option>
+            ))}
+        </select>
     )
 }
 
@@ -62,49 +60,47 @@ export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, o
     }
 
     return (
-        <>
-            <h1>GoA II Pick'n'Ban Tool</h1>
-            <div className='mainMenu'>
-                {state == "idle" ? (
-                    <>
-                        <div>
-                            <h2>Start a game</h2>
-                            <TeamSizeSelector
-                                teamsize={teamsize}
-                                availableTeamsizes={availableTeamsizes}
-                                onChangeTeamSize={onChangeTeamSize}
+        <div className='mainMenu'>
+            <h1>GoA II Pick'n'Ban</h1>
+            {state == "idle" ? (
+                <>
+                    <div className='startMenu'>
+                        <h2>Start game</h2>
+                        <TeamSizeSelector
+                            teamsize={teamsize}
+                            availableTeamsizes={availableTeamsizes}
+                            onChangeTeamSize={onChangeTeamSize}
+                        />
+                        <div className='startButtons'>
+                            <button className="startButton" onClick={() => onChangeView("pickbanscreen")}>Start local</button>
+                            <button className="startButton" onClick={() => startHosting()}>Host</button>
+                        </div>
+                    </div>
+                    <h2>Join game</h2>
+                    <div className='joinMenu'>
+                        <div className='idForm'>
+                            <div className='gameIDLabel'>Game ID:</div>
+                            <input
+                                className='idInputField'
+                                type="text"
+                                inputMode="numeric"
+                                pattern="[0-9]{7}"
+                                placeholder="xxxxxxx"
+                                value={gameIDToJoin}
+                                onChange={e => setGameIDToJoin(e.target.value)}
                             />
-                            <div>
-                                <button onClick={() => onChangeView("pickbanscreen")}>Start local</button>
-                                <button onClick={() => startHosting()}>Host</button>
-                            </div>
                         </div>
-                        <h2>Join an existing game</h2>
-                        <div>
-                            <div>
-                                <label>
-                                    Game ID:
-                                    <input
-                                        type='text'
-                                        value={gameIDToJoin}
-                                        onChange={e => setGameIDToJoin(e.target.value)}
-                                    />
-                                </label>
-                            </div>
-                            <div>
-                                <button onClick={() => join()}>Join</button>
-                            </div>
-                        </div>
-                    </>
-                ) : null}
-                {state == "hosting" ? (
-                    <>
-                        <label>Game ID: {teamsize.toString() + gameID}</label>
-                        <button onClick={() => endHosting()}>End Hosting</button>
-                    </>
-                ) : null}
+                        <button className='joinButton' onClick={() => join()}>Join</button>
+                    </div>
+                </>
+            ) : null}
+            {state == "hosting" ? (
+                <div className='lobby'>
+                    <label>Game ID: {teamsize.toString() + gameID}</label>
+                    <button onClick={() => endHosting()}>End Hosting</button>
+                </div>
+            ) : null}
 
-            </div >
-        </>
+        </div >
     )
 }

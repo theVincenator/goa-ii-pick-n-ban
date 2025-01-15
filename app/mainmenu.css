@@ -1,5 +1,66 @@
+* {
+    font-family: sans-serif;
+    min-height: 40px;
+}
+
 .mainMenu {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
     gap: 20px;
+    justify-self: center;
+    background-color: lightgray;
+    padding: 20px;
+}
+
+.startMenu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.teamSizeSelector {
+    font-size: large;
+    text-align: center;
+}
+
+.startButtons {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.startButton {
+    font-size: large;
+    flex: 1;
+}
+
+.joinMenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.idForm {
+    display: flex;
+    justify-content: center;
+}
+
+.gameIDLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: auto;
+    font-size: large;
+}
+
+.idInputField {
+    font-size: large;
+    text-align: center;
+    max-width: 80px;
+}
+
+.joinButton {
+    font-size: large;
+    flex: 1;
 }
