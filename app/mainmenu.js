@@ -17,7 +17,7 @@ function TeamSizeSelector({ teamsize, availableTeamsizes, onChangeTeamSize }) {
     )
 }
 
-function randomID() { return (Math.floor(Math.random() * 100000000)).toString() }
+function randomID() { return (Math.floor(Math.random() * 10000)).toString() }
 
 export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, onChangeTeamSize, onConnection }) {
     const [state, setState] = useState("idle");
@@ -33,6 +33,7 @@ export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, o
         });
         peer.on('connection', function (c) {
             console.log("Game was connected to.");
+            peer.off('connection');
             onConnection(c, true);
         });
         peer.on('error', function (e) { console.log(e) });
@@ -84,8 +85,8 @@ export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, o
                                 className='idInputField'
                                 type="text"
                                 inputMode="numeric"
-                                pattern="[0-9]{7}"
-                                placeholder="xxxxxxx"
+                                pattern="[2-5]{1}[0-9]{4}"
+                                placeholder="xxxxx"
                                 value={gameIDToJoin}
                                 onChange={e => setGameIDToJoin(e.target.value)}
                             />
