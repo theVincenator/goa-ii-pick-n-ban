@@ -64,3 +64,8 @@
     font-size: large;
     flex: 1;
 }
+
+.lobby {
+    display: flex;
+    flex-direction: column;
+}

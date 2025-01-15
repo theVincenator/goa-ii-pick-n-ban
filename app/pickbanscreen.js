@@ -174,13 +174,13 @@ function HeroInfo({ selectedHero }) {
             <div className="heroInfo">
                 {selectedHero.name}, {selectedHero.class}
                 <div className="difficultyLevel">
-                    {'*'.repeat(selectedHero.difficulty)}
+                    {' ★'.repeat(selectedHero.difficulty) + " ?"}
                 </div>
-                <ul>
-                    <li>Attack: {selectedHero.attack}</li>
-                    <li>Initiative: {selectedHero.initiative}</li>
-                    <li>Defense: {selectedHero.defense}</li>
-                    <li>Movement: {selectedHero.movement}</li>
+                <ul className="heroStats">
+                    <li className="heroStat">Attack: {selectedHero.attack}</li>
+                    <li className="heroStat">Initiative: {selectedHero.initiative}</li>
+                    <li className="heroStat">Defense: {selectedHero.defense}</li>
+                    <li className="heroStat">Movement: {selectedHero.movement}</li>
                 </ul>
             </div>
         );
