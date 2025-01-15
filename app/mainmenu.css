@@ -17,6 +17,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .teamSizeSelector {
@@ -28,6 +29,7 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    gap: 10px;
 }
 
 .startButton {
@@ -38,6 +40,7 @@
 .joinMenu {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .idForm {
