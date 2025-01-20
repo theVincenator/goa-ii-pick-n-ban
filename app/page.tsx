@@ -12,24 +12,34 @@ export default function App() {
   const [connectionData, setConnectionData] = useState({ isOnline: false, connection: null, label: null, isHosting: false });
   const [receivedHeroName, setReceivedHeroName] = useState("");
 
+  function resetConnection() {
+    setConnectionData({ isOnline: false, connection: null, label: null, isHosting: false });
+    setReceivedHeroName("");
+  }
+
   function handleExit() {
     if (connectionData.isOnline) {
-      setConnectionData({ isOnline: false, connection: null, label: null, isHosting: false });
-      setReceivedHeroName("");
+      resetConnection();
     }
     setView("mainmenu");
   }
 
   function handleConnection(c: any, isHosting: boolean) {
-    setConnectionData({ connection: c, label: c.label, isOnline: true, isHosting: isHosting });
-    setReceivedHeroName("");
+    if (c) {
+      setConnectionData({ connection: c, label: c.label, isOnline: true, isHosting: isHosting });
+      setReceivedHeroName("");
 
-    c.on('data', function (heroName: string) {
-      console.log("received data", heroName);
-      setReceivedHeroName(heroName);
-    });
+      c.on('data', function (heroName: string) {
+        console.log("received data", heroName);
+        setReceivedHeroName(heroName);
+      });
 
-    setView("pickbanscreen");
+      setView("pickbanscreen");
+    }
+    else {
+      //reset in case of error
+      resetConnection();
+    }
   }
 
   return (

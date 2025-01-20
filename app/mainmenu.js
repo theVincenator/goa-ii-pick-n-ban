@@ -72,6 +72,7 @@ export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, o
             console.log("Could not connect :(");
             peer.destroy();
             onChangeView("mainmenu");
+            onConnection(null);
         });
         peer.on('open', function (id) {
             console.log('Host ID is: ' + id);
