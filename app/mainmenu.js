@@ -17,7 +17,13 @@ function TeamSizeSelector({ teamsize, availableTeamsizes, onChangeTeamSize }) {
     )
 }
 
-function randomID() { return (Math.floor(Math.random() * 10000)).toString() }
+function randomID() {
+    var rnd = (Math.floor(Math.random() * 10000)).toString();
+    while (rnd.length < 4) {
+        rnd = "0" + rnd;
+    }
+    return rnd;
+}
 
 export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, onChangeTeamSize, onConnection }) {
     const [state, setState] = useState("idle");
@@ -62,7 +68,11 @@ export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, o
         if (peer) { peer.destroy() }
         console.log("Starting peer server...")
         peer = new Peer();
-        peer.on('error', function (e) { console.log(e) });
+        peer.on('error', function (e) {
+            console.log("Could not connect :(");
+            peer.destroy();
+            onChangeView("mainmenu");
+        });
         peer.on('open', function (id) {
             console.log('Host ID is: ' + id);
             const hostID = appID + gameIDToJoin;
