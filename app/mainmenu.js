@@ -23,11 +23,23 @@ export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, o
     const [state, setState] = useState("idle");
     const [gameID, setGameID] = useState(randomID);
     const [gameIDToJoin, setGameIDToJoin] = useState("");
+    const [isGameIDValid, setIsGameIDValid] = useState(false);
+
+    function handleGameIDToJoinChange(id) {
+        setGameIDToJoin(id);
+        const idRegex = /[2-5]{1}[0-9]{4}/;
+        if (idRegex.test(id)) {
+            setIsGameIDValid(true);
+        } else {
+            setIsGameIDValid(false);
+        }
+    }
 
     function startHosting() {
         setState("hosting");
         console.log("Starting peer server...")
         peer = new Peer(appID + teamsize.toString() + gameID);
+        peer.on('error', function (e) { console.log(e) });
         peer.on('open', function (id) {
             console.log('Host ID is: ' + id);
         });
@@ -36,7 +48,6 @@ export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, o
             peer.off('connection');
             onConnection(c, true);
         });
-        peer.on('error', function (e) { console.log(e) });
     }
 
     function endHosting() {
@@ -51,13 +62,13 @@ export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, o
         if (peer) { peer.destroy() }
         console.log("Starting peer server...")
         peer = new Peer();
+        peer.on('error', function (e) { console.log(e) });
         peer.on('open', function (id) {
             console.log('Host ID is: ' + id);
             const hostID = appID + gameIDToJoin;
             console.log("Connecting to Game: " + hostID);
             onConnection(peer.connect(hostID, { label: gameIDToJoin }), false);
         });
-        peer.on('error', function (e) { console.log(e) });
     }
 
     return (
@@ -88,10 +99,10 @@ export default function MainMenu({ onChangeView, teamsize, availableTeamsizes, o
                                 pattern="[2-5]{1}[0-9]{4}"
                                 placeholder="xxxxx"
                                 value={gameIDToJoin}
-                                onChange={e => setGameIDToJoin(e.target.value)}
+                                onChange={e => handleGameIDToJoinChange(e.target.value)}
                             />
                         </div>
-                        <button className='joinButton' onClick={() => join()}>Join</button>
+                        <button className='joinButton' disabled={!isGameIDValid} onClick={() => join()}>Join</button>
                     </div>
                 </>
             ) : null}
