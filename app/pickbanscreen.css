@@ -209,7 +209,9 @@
     min-height: 140px;
 
     border-style: solid;
+    border-color: black;
 
+    border-style: solid;
     font-size: small;
 
     display: flex;
@@ -221,6 +223,7 @@
 .randomHeroInfo {
     background-color: lightgrey;
     font-size: xx-large;
+    justify-content: center;
 }
 
 .heroName {
@@ -230,8 +233,9 @@
 }
 
 .difficultyLevel {
+    color: darkred;
     flex: 1;
-    font-size: large;
+    font-size: medium;
     display: flex;
     justify-content: center;
 }
@@ -239,15 +243,39 @@
 .heroStats {
     flex: 1;
     display: grid;
-    width: 100%;
-    height: 100%;
-}
-
-.heroStats>div {
-    grid-template-rows: repeat(auto-fill, 1fr);
-    grid-template-columns: repeat(auto-fill, 1fr);
+    justify-content: center;
 }
 
 .heroStat {
+    display: flex;
+    justify-self: end;
+    gap: 5px;
+}
+
+.heroStatPips {
     min-height: 20px;
+    grid-template-rows: repeat(auto-fill, 1fr);
+    grid-template-columns: repeat(auto-fill, 1fr);
+    display: flex;
+    gap: 2px;
+}
+
+.statPip {
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.fullPip {
+    background-color: orange;
+}
+
+.lightPip {
+    background-color: khaki;
+}
+
+.offPip {
+    background-color: darkgray;
 }

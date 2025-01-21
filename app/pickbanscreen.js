@@ -166,6 +166,43 @@ function HeroGrid({ onSelectedHeroChange, pickOrBanStep, selectedHero, teamAPick
     );
 }
 
+function StatPip({ isLight, isOff }) {
+    let classNames = ["statPip"];
+    if (isOff) {
+        classNames.push("offPip");
+
+    } else if (isLight) {
+        classNames.push("lightPip");
+    } else {
+        classNames.push("fullPip");
+    }
+    return <div className={classNames.join(' ')} />
+}
+
+function StatRow({ name, value }) {
+    let fullStats = 0;
+    let lightStats = 0;
+    if (Array.isArray(value)) {
+        fullStats = value[0];
+        lightStats = value[1];
+    } else {
+        fullStats = value;
+        lightStats = value;
+    }
+
+    return (
+        <div className='heroStat'>
+            <div>{name}</div>
+            <div className="heroStatPips">
+                {Array.from({ length: 8 }, (_, i) => <StatPip key={name + i}
+                    isLight={i > fullStats ? true : false}
+                    isOff={i > lightStats}
+                />)}
+            </div>
+        </div>
+    );
+}
+
 function HeroInfo({ selectedHero }) {
     if (selectedHero) {
         const conjunction = selectedHero.name != "Widget" ? ", " : " and ";
@@ -178,12 +215,12 @@ function HeroInfo({ selectedHero }) {
                     {' ★'.repeat(selectedHero.difficulty)}
                 </div>
                 <div className="heroStats">
-                    <div className="heroStat">Attack: {selectedHero.attack}</div>
-                    <div className="heroStat">Initiative: {selectedHero.initiative}</div>
-                    <div className="heroStat">Defense: {selectedHero.defense}</div>
-                    <div className="heroStat">Movement: {selectedHero.movement}</div>
+                    <StatRow name="Attack" value={selectedHero.attack} />
+                    <StatRow name="Defense" value={selectedHero.defense} />
+                    <StatRow name="Initiative" value={selectedHero.initiative} />
+                    <StatRow name="Movement" value={selectedHero.movement} />
                 </div>
-            </div>
+            </div >
         );
     } else {
         return (
