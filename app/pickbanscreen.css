@@ -3,9 +3,17 @@
     --team-b-color: lightskyblue;
 }
 
+.scalebox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .pickBanScreen {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    max-width: 1100;
 }
 
 .headerBar {
@@ -156,7 +164,7 @@
     gap: 10px;
     flex-wrap: wrap-reverse;
     justify-content: space-evenly;
-    padding: 20px 0px;
+    padding: 20px 0px 0px 0px;
 }
 
 .heroGrid {

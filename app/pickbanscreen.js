@@ -355,32 +355,34 @@ export default function PickBanScreen({ handleExit, teamsize, connectionData, re
     }
 
     return (
-        <div className="pickBanScreen">
-            <div className="headerBar">
-                <button className="quitButton" onClick={() => handleExit()}>Back to Main Menu (Abandon)</button>
-                <div className="hostingStatus">
-                    {connectionData.isOnline && connectionData.isHosting ? <>Hosting game {connectionData.label}</> : null}
-                    {connectionData.isOnline && !connectionData.isHosting ? <>Connected to game {connectionData.label}</> : null}
+        <div className='scalebox'>
+            <div className="pickBanScreen">
+                <div className="headerBar">
+                    <button className="quitButton" onClick={() => handleExit()}>Back to Main Menu (Abandon)</button>
+                    <div className="hostingStatus">
+                        {connectionData.isOnline && connectionData.isHosting ? <>Hosting game {connectionData.label}</> : null}
+                        {connectionData.isOnline && !connectionData.isHosting ? <>Connected to game {connectionData.label}</> : null}
+                    </div>
                 </div>
+                <AllPicksAndBans
+                    teamAStatus={teamAStatus}
+                    teamBStatus={teamBStatus}
+                    teamsize={teamsize}
+                    teamAPicks={teamAPicks}
+                    teamABans={teamABans}
+                    teamBPicks={teamBPicks}
+                    teamBBans={teamBBans}
+                />
+                <HeroPicker
+                    submitSelection={onSubmitSelection}
+                    allowSelection={allowSelection}
+                    pickOrBanStep={pickBanOrder[0]}
+                    teamAPicks={teamAPicks}
+                    teamABans={teamABans}
+                    teamBPicks={teamBPicks}
+                    teamBBans={teamBBans}
+                />
             </div>
-            <AllPicksAndBans
-                teamAStatus={teamAStatus}
-                teamBStatus={teamBStatus}
-                teamsize={teamsize}
-                teamAPicks={teamAPicks}
-                teamABans={teamABans}
-                teamBPicks={teamBPicks}
-                teamBBans={teamBBans}
-            />
-            <HeroPicker
-                submitSelection={onSubmitSelection}
-                allowSelection={allowSelection}
-                pickOrBanStep={pickBanOrder[0]}
-                teamAPicks={teamAPicks}
-                teamABans={teamABans}
-                teamBPicks={teamBPicks}
-                teamBBans={teamBBans}
-            />
         </div>
     );
 }

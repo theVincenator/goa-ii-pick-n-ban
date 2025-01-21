@@ -17,8 +17,8 @@ export default function HeroButton({ heroname, className, onSelectedHeroChange, 
                 <Image
                     id="heroimg"
                     src={imageLocation}
-                    width={0}
-                    height={0}
+                    width={220}
+                    height={290}
                     alt=""
                     style={{ width: '100%', height: "100%" }} />
                 <div className="nameOverlayBox" style={{ maskImage: maskImage }}>
