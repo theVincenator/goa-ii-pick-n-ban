@@ -167,16 +167,19 @@ function HeroGrid({ onSelectedHeroChange, pickOrBanStep, selectedHero, teamAPick
 }
 
 function StatPip({ isLight, isOff }) {
-    let classNames = ["statPip"];
+    let pipStyle = "";
     if (isOff) {
-        classNames.push("offPip");
-
+        pipStyle = "offPip";
     } else if (isLight) {
-        classNames.push("lightPip");
+        pipStyle = "lightPip";
     } else {
-        classNames.push("fullPip");
+        pipStyle = "fullPip";
     }
-    return <div className={classNames.join(' ')} />
+    return (
+        <div className="statPipBox">
+            <div className={"statPip " + pipStyle} />
+        </div>
+    );
 }
 
 function StatRow({ name, value }) {
@@ -191,8 +194,8 @@ function StatRow({ name, value }) {
     }
 
     return (
-        <div className='heroStat'>
-            <div>{name}</div>
+        <div className="heroStat">
+            <div className="heroStatName">{name}</div>
             <div className="heroStatPips">
                 {Array.from({ length: 8 }, (_, i) => <StatPip key={name + i}
                     isLight={i > fullStats ? true : false}
@@ -215,10 +218,10 @@ function HeroInfo({ selectedHero }) {
                     {' ★'.repeat(selectedHero.difficulty)}
                 </div>
                 <div className="heroStats">
-                    <StatRow name="Attack" value={selectedHero.attack} />
-                    <StatRow name="Defense" value={selectedHero.defense} />
-                    <StatRow name="Initiative" value={selectedHero.initiative} />
-                    <StatRow name="Movement" value={selectedHero.movement} />
+                    <StatRow name="ATK" value={selectedHero.attack} />
+                    <StatRow name="DEF" value={selectedHero.defense} />
+                    <StatRow name="INI" value={selectedHero.initiative} />
+                    <StatRow name="MOV" value={selectedHero.movement} />
                 </div>
             </div >
         );
