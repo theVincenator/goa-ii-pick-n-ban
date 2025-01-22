@@ -7,6 +7,64 @@ import HeroCard from './herocard'
 
 import "./pickbanscreen.css";
 
+function StatBar({ fullVal, lightVal, max }) {
+
+    function getPipState(n) {
+        let classnames = ["teamStatPip"]
+        if (n + 1 > lightVal) {
+            classnames.push("offPip");
+        } else if (n + 1 > fullVal) {
+            classnames.push("lightPip");
+        } else {
+            classnames.push("fullPip");
+        }
+        return classnames.join(" ");
+    }
+
+    return (
+        <div className="teamStatBar">
+            {Array.from({ length: max }, (_, i) =>
+                <div key={"teamstat-" + i} className={getPipState(i)} />
+            )}
+        </div>
+    );
+}
+
+function TeamStat({ name, fullVal, lightVal, max }) {
+    return (
+        <div className="teamStat">
+            <div className="teamStatName">{name}</div>
+            <StatBar fullVal={fullVal} lightVal={lightVal} max={max} />
+        </div>
+    );
+}
+
+function TeamStats({ teamsize, picks }) {
+    const max = teamsize * 8;
+    const teamStats = { attack: [0, 0], defense: [0, 0], initiative: [0, 0], movement: [0, 0] }
+
+    picks.forEach(h => {
+        ["attack", "defense", "initiative", "movement"].forEach(statname => {
+            if (Array.isArray(h[statname])) {
+                teamStats[statname][0] += h[statname][0];
+                teamStats[statname][1] += h[statname][1];
+            } else {
+                teamStats[statname][0] += h[statname];
+                teamStats[statname][1] += h[statname];
+            }
+        })
+    });
+
+    return (
+        <div className='teamStats'>
+            <TeamStat name="ATK" fullVal={teamStats.attack[0]} lightVal={teamStats.attack[1]} max={max} />
+            <TeamStat name="DEF" fullVal={teamStats.defense[0]} lightVal={teamStats.defense[1]} max={max} />
+            <TeamStat name="INI" fullVal={teamStats.initiative[0]} lightVal={teamStats.initiative[1]} max={max} />
+            <TeamStat name="MOV" fullVal={teamStats.movement[0]} lightVal={teamStats.movement[1]} max={max} />
+        </div>
+    );
+}
+
 function TeamAPicks({ teamsize, teamAPicks }) {
     let picks = []
     for (let n = 0; n < teamsize; n++) {
@@ -65,6 +123,7 @@ function TeamAPicksAndBans({ teamAStatus, teamsize, teamAPicks, teamABans }) {
             <div className="teamAStatus">
                 {teamAStatus}
             </div>
+            <TeamStats teamsize={teamsize} picks={teamAPicks} />
             <TeamAPicks teamsize={teamsize} teamAPicks={teamAPicks} />
             <TeamABans teamsize={teamsize} teamABans={teamABans} />
         </div>
@@ -77,6 +136,7 @@ function TeamBPicksAndBans({ teamBStatus, teamsize, teamBPicks, teamBBans }) {
             <div className="teamBStatus">
                 {teamBStatus}
             </div>
+            <TeamStats teamsize={teamsize} picks={teamBPicks} />
             <TeamBPicks teamsize={teamsize} teamBPicks={teamBPicks} />
             <TeamBBans teamsize={teamsize} teamBBans={teamBBans} />
         </div>
@@ -198,8 +258,8 @@ function StatRow({ name, value }) {
             <div className="heroStatName">{name}</div>
             <div className="heroStatPips">
                 {Array.from({ length: 8 }, (_, i) => <StatPip key={name + i}
-                    isLight={i > fullStats ? true : false}
-                    isOff={i > lightStats}
+                    isLight={i + 1 > fullStats ? true : false}
+                    isOff={i + 1 > lightStats}
                 />)}
             </div>
         </div>
